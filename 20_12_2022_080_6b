@@ -1,0 +1,34 @@
+#include<stdio.h>                      //adding the header file
+
+int binary_search(int arr[], int x ,int low, int high)            //define a function
+{
+if(high>=low)                    //check the condtion 
+{
+int mid;
+mid = low + (high-low)/2;        // declare the mid value 
+
+if(arr[mid]==x)                              //check the condtion 
+return mid;
+
+if(arr[mid]>x)
+return binary_search(arr,x, low, mid-1);
+
+else
+return binary_search(arr,x, mid+1, high);     //call the function 
+}
+return -1;
+}
+
+int main(void)                          //main value declare 
+{
+int arr[]={3,6,9,12,55};                         //declare the arr value
+int n = sizeof(arr)/sizeof(arr[0]);
+int x=55;
+int result=binary_search(arr,x,0,n-1);            //binary function call
+
+if(result==-1)
+printf("Not found");
+
+else
+printf("Element is found at index %d\n" , result);
+}
